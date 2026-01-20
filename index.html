@@ -1,37 +1,85 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>construction by Acoriy
-    </title>
-    <link rel="stylesheet" href="style.css">
+    <title>Formulaire WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: 50px auto;
+            border-radius: 8px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1ebe5d;
+        }
+    </style>
 </head>
 <body>
-    <div class="group-action">
-        <div class="login">
-            <form class="form1" method="post">
-                <h1>Login</h1>
-                <input type="email" id="email" placeholder="Email">
-                <input type="password" id="password" placeholder="Password">
-                <a href="#">Forgot My Password ?</a>
-                <br>
-                <button type="submit">login</button>
-                <span>Not having an account !<a onclick="changeSection1()">Sign Up</a></span>
-            </form>
-        </div>
-        <div class="signup">
-            <form class="form2" method="post">
-                <h1>Sign Up</h1>
-                <input type="text" id="fname" placeholder="First Name">
-                <input type="text" id="lname" placeholder="Last Name">
-                <input type="email" id="email" placeholder="Email">
-                <input type="password" id="password" placeholder="Password">
-                <button type="submit">signup</button>
-                <span>Already have an account!<a onclick="changeSection2()">Sign In</a></span>
-            </form>
-        </div>
-    </div>
-    <script src="script.js"></script>
+
+<form onsubmit="envoyerWhatsApp(); return false;">
+    <h2>Formulaire de contact</h2>
+
+    <label>Nom</label>
+    <input type="text" id="nom" required>
+
+    <label>Prénom</label>
+    <input type="text" id="prenom" required>
+
+    <label>Nationalité</label>
+    <input type="text" id="nationalite" required>
+
+    <label>Message</label>
+    <textarea id="message" required></textarea>
+
+    <button type="submit">Envoyer sur WhatsApp</button>
+</form>
+
+<script>
+function envoyerWhatsApp() {
+    var nom = document.getElementById("nom").value;
+    var prenom = document.getElementById("prenom").value;
+    var nationalite = document.getElementById("nationalite").value;
+    var message = document.getElementById("message").value;
+
+    var numero = "237653794702",+237654823559"; // Ton numéro WhatsApp
+
+    var texte =
+        "📋 Nouveau formulaire%0A%0A" +
+        "👤 Nom : " + nom + "%0A" +
+        "👤 Prénom : " + prenom + "%0A" +
+        "🌍 Nationalité : " + nationalite + "%0A%0A" +
+        "💬 Message : " + message;
+
+    var url = "https://wa.me/" + numero + "?text=" + texte;
+    window.open(url, "_blank");
+}
+</script>
+
 </body>
 </html>
