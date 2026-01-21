@@ -1,16 +1,33 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("form");
+function getData() {
+  return {
+    nom: nom.value,
+    prenom: prenom.value,
+    tel: tel.value,
+    nationalite: nationalite.value,
+  };
+}
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+async function envoyerDB() {
+  const data = getData();
 
-    // Animation de validation
-    form.style.opacity = "0.5";
-
-    setTimeout(() => {
-      alert("🎉 Bienvenue à ARJAP !\nVotre inscription a été enregistrée.");
-      form.reset();
-      form.style.opacity = "1";
-    }, 500);
+  const res = await fetch("/api/save", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   });
-});
+
+  alert(res.ok ? "Enregistré" : "Erreur");
+}
+
+function envoyerWhatsApp() {
+  const d = getData();
+  const msg = `ARJAP\nNom:${d.nom}\nPrénom:${d.prenom}\nTel:${d.tel}\nNat:${d.nationalite}`;
+  window.open(`https://wa.me/237653794702?text=${encodeURIComponent(msg)}`);
+}
+
+function envoyerEmail() {
+  const d = getData();
+  window.location.href =
+    `mailto:tonemail@gmail.com?subject=ARJAP&body=` +
+    encodeURIComponent(JSON.stringify(d, null, 2));
+    }
