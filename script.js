@@ -9,14 +9,20 @@ function envoyerWhatsApp(numero) {
     return;
   }
 
-  const message = `
-Bonjour ARJAP 👋
+  const message = `Bonjour ARJAP 👋
 Nom : ${nom}
 Prénom : ${prenom}
 Téléphone : ${telephone}
-Nationalité : ${nationalite}
-  `;
+Nationalité : ${nationalite}`;
 
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 }
+
+document.getElementById("btn1").addEventListener("click", function() {
+  envoyerWhatsApp("237654823558");
+});
+
+document.getElementById("btn2").addEventListener("click", function() {
+  envoyerWhatsApp("237653794702");
+});
