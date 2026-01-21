@@ -2,28 +2,27 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARJAP – Formulaire</title>
+  <title>ARJAP – Inscription</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="group-action">
-    <img src="photo.jpg" alt="ARJAP Logo" class="logo">
+<div class="group-action">
+  <img src="photo.jpg" class="logo">
+  <h2>Bienvenue à ARJAP</h2>
 
-    <h1>Bienvenue à ARJAP</h1>
-    <p class="subtitle">Unité • Solidarité • Développement</p>
+  <form id="arjapForm">
+    <input id="nom" placeholder="Nom" required>
+    <input id="prenom" placeholder="Prénom" required>
+    <input id="tel" placeholder="Téléphone" required>
+    <input id="nationalite" placeholder="Nationalité" required>
 
-    <form>
-      <input type="text" placeholder="Nom" required>
-      <input type="text" placeholder="Prénom" required>
-      <input type="tel" placeholder="Numéro de téléphone" required>
-      <input type="text" placeholder="Nationalité" required>
+    <button type="button" onclick="envoyerDB()">Enregistrer</button>
+    <button type="button" onclick="envoyerWhatsApp()">WhatsApp</button>
+    <button type="button" onclick="envoyerEmail()">Email</button>
+  </form>
+</div>
 
-      <button type="submit">Envoyer</button>
-    </form>
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
