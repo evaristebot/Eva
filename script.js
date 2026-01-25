@@ -1,28 +1,48 @@
-function envoyerWhatsApp(numero) {
-  const nom = document.getElementById("nom").value.trim();
-  const prenom = document.getElementById("prenom").value.trim();
-  const telephone = document.getElementById("telephone").value.trim();
-  const nationalite = document.getElementById("nationalite").value.trim();
+function goToForm() {
+  document.getElementById("home").classList.remove("active");
+  document.getElementById("form").classList.add("active");
+}
 
-  if (!nom || !prenom || !telephone || !nationalite) {
+function goHome() {
+  document.getElementById("form").classList.remove("active");
+  document.getElementById("home").classList.add("active");
+}
+
+function envoyerWhatsApp() {
+  const nom = nomInput();
+  const prenom = prenomInput();
+  const tel = telInput();
+  const nat = natInput();
+
+  if (!nom || !prenom || !tel || !nat) {
     alert("Veuillez remplir tous les champs");
     return;
   }
 
-  const message = `Bonjour ARJAP 👋
+  const message =
+`Bonjour ARJAP 👋
+Nouvelle inscription
+
 Nom : ${nom}
 Prénom : ${prenom}
-Téléphone : ${telephone}
-Nationalité : ${nationalite}`;
+Téléphone : ${tel}
+Nationalité : ${nat}`;
 
-  const url = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
-  window.open(url, "_blank");
+  const numeros = [
+    "237654823558",
+    "237653794702",
+    "237653375470"
+  ];
+
+  numeros.forEach(num => {
+    window.open(
+      `https://wa.me/${num}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  });
 }
 
-document.getElementById("btn1").addEventListener("click", function() {
-  envoyerWhatsApp("237654823558");
-});
-
-document.getElementById("btn2").addEventListener("click", function() {
-  envoyerWhatsApp("237653794702");
-});
+function nomInput() { return document.getElementById("nom").value.trim(); }
+function prenomInput() { return document.getElementById("prenom").value.trim(); }
+function telInput() { return document.getElementById("telephone").value.trim(); }
+function natInput() { return document.getElementById("nationalite").value.trim(); }
