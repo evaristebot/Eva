@@ -9,10 +9,10 @@ function goHome() {
 }
 
 function envoyerWhatsApp() {
-  const nom = nomInput();
-  const prenom = prenomInput();
-  const tel = telInput();
-  const nat = natInput();
+  const nom = document.getElementById("nom").value.trim();
+  const prenom = document.getElementById("prenom").value.trim();
+  const tel = document.getElementById("telephone").value.trim();
+  const nat = document.getElementById("nationalite").value.trim();
 
   if (!nom || !prenom || !tel || !nat) {
     alert("Veuillez remplir tous les champs");
@@ -21,28 +21,23 @@ function envoyerWhatsApp() {
 
   const message =
 `Bonjour ARJAP 👋
-Nouvelle inscription
+Nouvelle inscription reçue
 
 Nom : ${nom}
 Prénom : ${prenom}
 Téléphone : ${tel}
-Nationalité : ${nat}`;
+Nationalité : ${nat}
 
-  const numeros = [
-    "237654823558",
-    "237653794702",
-    "237653375470"
-  ];
+📌 Responsables :
++237653375470
++237653794702
++237654823559`;
 
-  numeros.forEach(num => {
-    window.open(
-      `https://wa.me/${num}?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
-  });
+  // WhatsApp ne s’ouvre qu’UNE fois (sécurité navigateur)
+  const numeroPrincipal = "+237653375470";
+
+  window.open(
+    `https://wa.me/${numeroPrincipal}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
 }
-
-function nomInput() { return document.getElementById("nom").value.trim(); }
-function prenomInput() { return document.getElementById("prenom").value.trim(); }
-function telInput() { return document.getElementById("telephone").value.trim(); }
-function natInput() { return document.getElementById("nationalite").value.trim(); }
