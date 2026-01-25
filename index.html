@@ -2,27 +2,55 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>ARJAP - Formulaire</title>
+  <title>ARJAP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="card">
-    <img src="photo.jpg" alt="ARJAP" class="logo">
+<!-- PAGE 1 : ACCUEIL -->
+<div class="page active" id="home">
+  <img src="photo.jpg" class="logo">
 
-    <h1>Bienvenue à ARJAP 👋</h1>
-    <p>Veuillez remplir le formulaire</p>
+  <h1>Bienvenue à ARJAP</h1>
 
-    <input type="text" id="nom" placeholder="Nom">
-    <input type="text" id="prenom" placeholder="Prénom">
-    <input type="tel" id="telephone" placeholder="Numéro de téléphone">
-    <input type="text" id="nationalite" placeholder="Nationalité">
+  <p class="text">
+    Bonjour à tous et bienvenue à <strong>ARJAP</strong><br>
+    <em>(Association Révolutionnaire des Jeunes Ambitieux Panafricains)</em><br><br>
 
-    <button id="btn1">Envoyer au numéro 1</button>
-    <button id="btn2">Envoyer au numéro 2</button>
-  </div>
+    ARJAP est une organisation engagée pour l’éveil, la transformation et l’unité
+    de la jeunesse africaine.<br><br>
 
-  <script src="script.js"></script>
+    Nous œuvrons pour un changement de mentalité positif afin de bâtir une Afrique
+    forte, consciente et tournée vers un avenir meilleur.<br><br>
+
+    Ensemble, devenons les acteurs du changement.
+  </p>
+
+  <p class="join">
+    👉 Pour rejoindre et devenir un <strong>membre officiel</strong>,
+    cliquez sur le bouton ci-dessous.
+  </p>
+
+  <button onclick="goToForm()">Inscription</button>
+</div>
+
+<!-- PAGE 2 : FORMULAIRE -->
+<div class="page" id="form">
+  <h2>Formulaire d’inscription ARJAP</h2>
+
+  <input id="nom" placeholder="Nom">
+  <input id="prenom" placeholder="Prénom">
+  <input id="telephone" placeholder="Numéro de téléphone">
+  <input id="nationalite" placeholder="Nationalité">
+
+  <button onclick="envoyerWhatsApp()">
+    Envoyer la demande
+  </button>
+
+  <button class="back" onclick="goHome()">← Retour</button>
+</div>
+
+<script src="script.js"></script>
 </body>
-</html>
+    </html>
